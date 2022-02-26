@@ -1,5 +1,14 @@
 const choicesBtn = document.querySelectorAll(".choice-btn");
 const result = document.getElementById("result");
+const playerScoreTxt = document.getElementById("playerScoreTxt");
+const computerScoreTxt = document.getElementById("computerScoreTxt");
+
+let playerScore = 0;
+let computerScore = 0;
+
+result.innerHTML = "Pick A choice to start";
+playerScoreTxt.innerHTML = `Player:${playerScore}`;
+computerScoreTxt.innerHTML = `Computer:${computerScore}`;
 
 choicesBtn.forEach((choice) => {
   choice.addEventListener("click", function () {
@@ -19,21 +28,36 @@ choicesBtn.forEach((choice) => {
     if (playerInput === "Rock") {
       if (computerChoice === "Scissors") {
         result.innerHTML = `${resultOfMatch} You win`;
+        playerScore++;
       } else {
         result.innerHTML = `${resultOfMatch} You loose`;
+        computerScore++;
       }
     } else if (playerInput === "Paper") {
       if (computerChoice === "Rock") {
         result.innerHTML = `${resultOfMatch} You win`;
+        playerScore++;
       } else {
         result.innerHTML = `${resultOfMatch} You loose`;
+        computerScore++;
       }
     } else if (playerInput === "Scissors") {
       if (computerChoice === "Papaer") {
         result.innerHTML = `${resultOfMatch} You win`;
+        playerScore++;
       } else {
         result.innerHTML = `${resultOfMatch} You loose`;
+        computerScore++;
       }
     }
+
+    if (playerScore === 4) {
+      alert("win");
+    } else if (computerScore === 4) {
+      alert("loss");
+    }
+
+    playerScoreTxt.innerHTML = `Player:${playerScore}`;
+    computerScoreTxt.innerHTML = `Computer:${computerScore}`;
   });
 });
